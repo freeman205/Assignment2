@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <script defer src="dashboard.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen">
+  <!-- Header -->
+  <header class="bg-white shadow p-4 flex justify-between items-center sticky top-0 z-40">
+    <h1 class="text-2xl font-bold">🎯 Survey Dashboard</h1>
+    <button id="menuToggle" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">☰ Menu</button>
+  </header>
+
+  <!-- Side Menu -->
+  <nav id="sideMenu" class="absolute top-16 right-4 w-56 bg-white shadow-lg rounded-lg hidden z-50">
+    <ul class="divide-y divide-gray-200">
+      <li class="menu-item p-3 hover:bg-gray-100 cursor-pointer" data-section="profile">👤 View Profile</li>
+      <li class="menu-item p-3 hover:bg-gray-100 cursor-pointer" data-section="history">📜 Transfer History</li>
+      <li class="menu-item p-3 hover:bg-gray-100 cursor-pointer" data-section="redeem">💰 Redeem Points</li>
+      <li class="menu-item p-3 hover:bg-gray-100 cursor-pointer" data-section="transfer">🔁 Transfer Points</li>
+      <li class="menu-item p-3 hover:bg-gray-100 cursor-pointer" data-section="password">🔐 Change Password</li>
+      <li class="menu-item p-3 hover:bg-gray-100 cursor-pointer" data-section="pin">🔒 Change PIN</li>
+      <li class="menu-item p-3 hover:bg-gray-100 cursor-pointer" data-section="logout">🚪 Logout</li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="mainContent" class="p-6 space-y-6">
+    <!-- Dashboard Overview -->
+    <section id="dashboardHome">
+      <h2 class="text-xl font-semibold mb-4">Welcome Back!</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-white p-4 rounded shadow">
+          <h3 class="font-semibold text-gray-600">Wallet Balance</h3>
+          <p class="text-2xl font-bold text-green-600" id="walletBalance">₦0.00</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+          <h3 class="font-semibold text-gray-600">Surveys Completed</h3>
+          <p class="text-2xl font-bold text-blue-600" id="completedSurveys">0</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+          <h3 class="font-semibold text-gray-600">Pending Redemptions</h3>
+          <p class="text-2xl font-bold text-yellow-600" id="pendingRedemptions">₦0.00</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Survey Section -->
+    <section class="bg-white p-6 rounded shadow">
+      <h3 class="text-lg font-bold mb-4">🎉 Available Surveys</h3>
+
+      <!-- Filters -->
+      <div class="flex flex-wrap gap-2 mb-4">
+        <select class="p-2 border rounded" id="surveyCategory">
+          <option value="">All Categories</option>
+          <option value="health">Health</option>
+          <option value="tech">Technology</option>
+          <option value="finance">Finance</option>
+        </select>
+        <select class="p-2 border rounded" id="surveyLength">
+          <option value="">All Lengths</option>
+          <option value="short">Under 5 mins</option>
+          <option value="medium">5-15 mins</option>
+          <option value="long">15+ mins</option>
+        </select>
+      </div>
+
+      <!-- Survey List -->
+      <div id="surveyList" class="space-y-4">
+        <div class="border p-4 rounded hover:shadow-md cursor-pointer">
+          <h4 class="font-semibold">📋 Tech Habits Survey</h4>
+          <p class="text-sm text-gray-500">Duration: 8 minutes • Reward: ₦120</p>
+          <button class="mt-2 text-sm px-3 py-1 bg-blue-500 text-white rounded">Take Survey</button>
+        </div>
+        <div class="border p-4 rounded hover:shadow-md cursor-pointer">
+          <h4 class="font-semibold">💊 Healthcare Awareness</h4>
+          <p class="text-sm text-gray-500">Duration: 5 minutes • Reward: ₦90</p>
+          <button class="mt-2 text-sm px-3 py-1 bg-blue-500 text-white rounded">Take Survey</button>
+        </div>
+        <!-- More survey cards will be populated dynamically -->
+      </div>
+    </section>
+
+    <!-- Activity Feed -->
+    <section class="bg-white p-6 rounded shadow">
+      <h3 class="text-lg font-bold mb-4">🕒 Recent Activity</h3>
+      <ul class="text-sm space-y-2" id="activityFeed">
+        <li>✅ Completed "Finance Insight Survey" and earned ₦150</li>
+        <li>💳 Redeemed ₦500 to BTC Wallet</li>
+        <li>📥 Received 200 points from agent referral</li>
+      </ul>
+    </section>
+
+    <!-- Action Section (Dynamic Content) -->
+    <section id="actionSection" class="mt-6"></section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-gray-500 p-4">
+    <p>&copy; 2025 SurveyPlatform. All rights reserved.</p>
+    <p>
+      <a href="#" class="text-blue-500 hover:underline">Support</a> ·
+      <a href="#" class="text-blue-500 hover:underline">Terms</a> ·
+      <a href="#" class="text-blue-500 hover:underline">Privacy</a>
+    </p>
+  </footer>
+</body>
+</html>
